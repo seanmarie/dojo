@@ -1,0 +1,6 @@
+.envrc
+*.swp
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+.terraform/
