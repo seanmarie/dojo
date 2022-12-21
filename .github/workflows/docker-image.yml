@@ -22,6 +22,8 @@ jobs:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     - name: Log in to DO Container Registry 
       run: doctl registry login --expiry-seconds 600
+    - name:
+      run: if [ ! -z "$(doctl registry repository list | grep "dojo")" ]; then doctl registry repository delete-manifest registry.digitalocean.com/dojo $(doctl registry repository list-tags dojo | grep -o "sha.*") --force; else echo "No repository"; fi 
     - name: Tag image 
       run: docker tag dojo:latest registry.digitalocean.com/dojo/dojo:latest
     - name: Push image to DO Container Registry 
