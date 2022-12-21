@@ -24,7 +24,7 @@ jobs:
       run: doctl registry login --expiry-seconds 600
     - name: Tag image 
       run:
-        docker tag dojo \
-        registry.digitalocean.com/dojo/dojo:${{github.event.inputs.version }}
+        docker tag dojo:latest \
+        registry.digitalocean.com/dojo/dojo:latest
     - name: Push image to DO Container Registry 
-      run: docker push registry.digitalocean.com/dojo/dojo:${{ github.event.inputs.version }}
+      run: docker push registry.digitalocean.com/dojo/dojo:latest
