@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dojo:latest
+      run: docker build ./app/ --file ./app/Dockerfile --tag dojo:latest
     - name: Install doctl 
       uses: digitalocean/action-doctl@v2
       with:
