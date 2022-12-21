@@ -15,4 +15,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./app/ --file ./app/Dockerfile --tag dojo:$(date +%s)
+      run: docker build . --file Dockerfile --tag dojo:latest
+    - name: Install doctl 
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Log in to DO Container Registry 
+      run: doctl registry login --expiry-seconds 600
+    - name: Tag image 
+      run:
+        docker tag dojo \
+        registry.digitalocean.com/dojo/dojo:${{github.event.inputs.version }}
+    - name: Push image to DO Container Registry 
+      run: docker push registry.digitalocean.com/dojo/dojo:${{ github.event.inputs.version }}
+>>>>>>> babeaab (Updating docker-image.yml for pushing Docker image to Digital Ocean image repository)
