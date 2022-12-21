@@ -28,4 +28,3 @@ jobs:
         registry.digitalocean.com/dojo/dojo:${{github.event.inputs.version }}
     - name: Push image to DO Container Registry 
       run: docker push registry.digitalocean.com/dojo/dojo:${{ github.event.inputs.version }}
->>>>>>> babeaab (Updating docker-image.yml for pushing Docker image to Digital Ocean image repository)
