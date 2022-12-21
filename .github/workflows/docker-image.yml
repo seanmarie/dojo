@@ -23,8 +23,6 @@ jobs:
     - name: Log in to DO Container Registry 
       run: doctl registry login --expiry-seconds 600
     - name: Tag image 
-      run:
-        docker tag dojo:latest \
-        registry.digitalocean.com/dojo/dojo:latest
+      run: docker tag dojo:latest registry.digitalocean.com/dojo/dojo:latest
     - name: Push image to DO Container Registry 
       run: docker push registry.digitalocean.com/dojo/dojo:latest
