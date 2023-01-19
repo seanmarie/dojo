@@ -12,7 +12,7 @@ func setupRouter() *gin.Engine {
 		c.JSON(http.StatusOK, struct{ Status string }{Status: "OK"})
 	})
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello, Docker! <3")
+		c.String(http.StatusOK, "Hello, Docker! <3 <3")
 	})
 	return r
 }
